@@ -4,7 +4,7 @@ extends Node
 var star = preload('res://star.xml')
 const SEED = 1.61803398875
 
-const STAR_DENSITY = 0.032
+const STAR_DENSITY = 0.022
 
 var X = 0
 var Y = 0
