@@ -1,0 +1,62 @@
+We Under Skies
+(as made for the Godot Community Game Jam 2016)
+
+We Under Skies will be an open-world, sandbox-style galactic colonization simulator.
+Your ship and its crew have crash-landed on a mysterious world in a mysterious sector of space. You must use what you have around you, and re-build your civilization under brave new skies!
+
+Aims of the Project:
+* Embrace Procedural Generation
+* Create huge content based on simple rules
+* Provide an engaging interactive simulation, also based on very simple rules
+* If anything, provide a good showcase for the possibilities of PCG
+
+A playable demo of the game should be completed in 3 weeks.
+WEEK 1: Set up core Game Settings, build Galaxy Generator
+WEEK 2: Game-a-fy Galaxy
+WEEK 3: Crunch & Polish
+
+
+THE GALAXY
+A Galaxy will be made of a number of placed Stars, with each Star having a potential number of Worlds. Upon creating a new Galaxy, the player will be prompted to enter a Name for their Galaxy. This Name will be used as the random seed to generate the Galaxy, so any user generating a Galaxy of the same Name, will effectively generate an identical Galaxy. This introduces an element of online play, without the need for any online components.
+
+[Galaxy Generation]
+	[Star Generation]
+		[World Generation]
+
+Once a Galaxy is generated, a Homeworld is created for the player. The generator should scan through Stars in the Galaxy, and find a suitible Star and position around that Star for their Homeworld. A Homeworld will be generated not unlike other Worlds, although it will have stricter limits, giving it a result which is more ideal.
+
+
+THE SIMULATOR
+The core mechanic of the game should revolve around semi-casual resource management. The Colony generates resources which are then used to expand the Colony. Eventually, it is possible to 're-discover' space travel and found new colonies on neighboring Worlds. Eventually the player can travel to other star systems and colonize those as well.
+For the sake of time, game mechanics should be as simple as possible. Think, Sim City (the original) in space.
+
+Have ~3 Needs, a means spend resources to meet those Needs, and a mechanic to alter Population based on the supply/demand of Needs.
+The properties of a World should greatly influence these demand meters. Players should be nudged to build their Colonies to augment their inhabited World. A small, lifeless moon may be rich in rare minerals, but lacks the hostile environment makes natural living conditions much harder to achieve, which means that Population on that world demands much more Materials and Energy in order to sustain themselves. Population living on a lush jungle World may be content with living in straw huts, which consume little to no Materials or Energy.
+
+
+NO RESEARCH
+I always had the idea that this game would have some sort of research system, with a technology tree and Science Points and whatever else.
+But this approach will attempt the Dwarf Fortress-esque "Everything's Open" style. You are capable of building anything at any time, it is only a matter of putting the right materials together in the right pot to make it happen.
+The most basic technology can be built with just raw Materials. Higher technology will require one or more of these basic technologies. A Hull Plate Factory requires Steel, Steel can only be made in a Foundry, a Foundry can be build from Iron, which is gained through basic Mining (which requires nothing to build).
+
+SIMPLE CRAFTING
+This loop of building high technology up from low technology will basically be a crafting system.
+As with any crafting system, this one should be super-simple. There must be easy, limiting rules:
+-Basic Tech is made from raw material (A Foundry is made from just Iron)
+-Anything higher requires at least one lower tech (along with maybe some raw material) A Steel Foundry is made from Steel and Iron
+-Buildings consume one or more ingredients, and produce a resulting ingredient. A Steel Foundry consumes Iron and Energy and produces Steel. A Hull Plate Factory consumes Steel and Energy and produces Hull Plates.
+
+SHIPS AS THE GOAL
+The big goal for working up the tech tree is to become capable of manufacturing spaceships to take people to other Worlds and Star systems.
+A Ship is a collection of Components. Each Component is made of other Components.
+Ships have the following properties, based on their specific construction
+MASS - The over-all mass of the ship. Each ship component has a Mass, which is summed to get the Ships total Mass
+	-The net speed of a Ship is a product of ship Mass and Thrust
+	-Ship Mass will affect how much power is needed to orbit/de-orbit a World (along with the World's Mass)
+THRUST- The Gross power of the ship's primary thrusters. Ships with more Mass require more Thrust to attain an equal speed.
+FUEL- Fuel is consumed to produce Thrust. Ships with higher Thrust will consume Fuel more quickly.
+CREW- Depending on the Ship's Purpose and Mass, a minimum number of Crew must be aboard the ship for it to operate.
+PURPOSE- The Ship's primary Purpose determines all of its other characteristics. 
+
+SHIP PURPOSE - Each Ship Has One Job
+Each Ship design has one, and only one, main Purpose. This determines the base characteristics of the ship; whether it's a heavily-armed fighter or a bulky cargo vessel, or an agile scout.
