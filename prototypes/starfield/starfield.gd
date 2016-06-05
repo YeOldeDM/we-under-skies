@@ -12,8 +12,9 @@ var star_obj = preload('res://star.xml')
 var SEED = randi()*randf()
 
 func _ready():
+	randomize()
 	# Define the almighty SEED
-	seed(SEED)
+	#seed(SEED)
 	
 	# Generate star data
 	var stars = StarGen.make_galaxy()
@@ -26,10 +27,11 @@ func _ready():
 		S.data = star
 		S.set_pos(S.data.pos)
 		var sc = S.data.lum*0.02
-		S.set_scale(Vector2(sc,sc))
+		S.set_scale(Vector2(sc,sc)*2)
 		var color = StarGen.StellarColors[S.data.stellar_class]
 		S.set_modulate(color)
 		S.get_node('Haze').set_modulate(color)
+		S.get_node('Haze').set_self_opacity((S.data.lum*0.01)/4)
 	
 	#bring the seed out of the RNG
 	randomize()	
