@@ -15,8 +15,11 @@ class Star:
 	var name
 	var pos
 	var lum
+	
 	var stellar_class
 	var lumin_class
+	
+	var worlds
 	
 	func _init(name,pos,lum):
 		self.name = name
@@ -27,12 +30,12 @@ class Star:
 		return int((self.pos - other_pos).length())
 
 
-var STAR_COUNT = 250
+var STAR_COUNT = 300
 
 var HYPERGIANTS = 0.005
 var GIANTS = 0.075
-var MAIN_SEQUENCE = 0.23
-var DWARVES = 0.61
+var MAIN_SEQUENCE = 0.45
+#var DWARVES = 0.61
 
 func make_galaxy():
 	
@@ -48,113 +51,55 @@ func make_galaxy():
 	print("\n making ",DW," Dwarves")
 	# Container for stars made
 	var made_stars = []
-	var gen_tries = 10
+
 	#Start with the largest stars, and generate down
-	var tries
-	while HG > 0:
-		tries = gen_tries
-		while tries > 0:
-			var pos = _rpos()
-			var new_star = _make_hypergiant(pos)
-			var made = true
-			for star in made_stars:
-				var D = star.get_distance_to(pos)
-				var L = (star.lum + new_star.lum)*0.75
-				printt(D,L)
-				if D < L:
-					made = false
-					print("rejected pos ",pos)
-			if made:
-				made_stars.append(new_star)
-				print("ADDED HYPERGIANT")
-				tries = 0
-			else: tries -= 1
-		HG -= 1
+	for chunk in [[HG,'_make_hypergiant'],
+					[G,'_make_giant'],
+					[MS,'_make_mainsequence'],
+					[DW,'_make_dwarf']]:
+		_make_stars(made_stars,chunk[0],chunk[1])
 	
+	# Generate Worlds on each Star
+	for star in made_stars:
+		star.worlds = WorldGen.make_system(star)
 	
-	while G > 0:
-		tries = gen_tries
-		while tries > 0:
-			print(tries)
-			var pos = _rpos()
-			var new_star = _make_giant(pos)
-			var made = true
-			for star in made_stars:
-				var D = star.get_distance_to(pos)
-				var L = (star.lum + new_star.lum)*0.75
-				printt(D,L)
-				if D < L:
-					made = false
-					print("rejected pos ",pos)
-			if made:
-				made_stars.append(new_star)
-				print("ADDED GIANT")
-				tries = 0
-			else: tries -= 1; 
-		G -= 1
-
-	
-	while MS > 0:
-		tries = gen_tries
-		while tries > 0:
-			var pos = _rpos()
-			var new_star = _make_mainsequence(pos)
-			var made = true
-			for star in made_stars:
-				var D = star.get_distance_to(pos)
-				var L = (star.lum + new_star.lum)*0.75
-				printt(D,L)
-				if D < L:
-					made = false
-					print("rejected pos ",pos)
-			if made:
-				made_stars.append(new_star)
-				print("ADDED MAINSEQUENCE")
-				tries = 0
-			else: tries -= 1; 
-		MS -= 1
-
-	
-	while DW > 0:
-		tries = gen_tries
-		while tries > 0:
-			var pos = _rpos()
-			var new_star = _make_dwarf(pos)
-			var made = true
-			for star in made_stars:
-				var D = star.get_distance_to(pos)
-				var L = (star.lum + new_star.lum)*0.75
-				printt(D,L)
-				if D < L:
-					made = false
-					print("rejected pos ",pos)
-			if made:
-				made_stars.append(new_star)
-				print("ADDED DWARF")
-				tries = 0
-			else: tries -= 1; 
-		DW -= 1
-
 	return made_stars
+
+func _make_stars( made_stars, count, star_factory ):
+	while count > 0:
+		var tries = 5
+		while tries > 0:
+			var pos = _rpos()
+			var new_star = call(star_factory,pos)
+			new_star.name = skana.makeName(int(rand_range(1,3)),2,4)
+			var made = true
+			for star in made_stars:
+				var D = star.get_distance_to(pos)
+				var L = (star.lum + new_star.lum)*0.75
+				if D < L:
+					made = false
+			if made:
+				made_stars.append(new_star)
+				tries = 0
+			else: tries -= 1; 
+		count -= 1
+
 
 func _make_hypergiant(pos):
 	var S = Star.new("Hypergiant",pos,round(rand_range(80,100)))
 	S.stellar_class = "O"
-	print("Made a Hypergiant")
 	return S
 
 func _make_giant(pos):
 	var S = Star.new("Giant",pos,round(rand_range(40,60)))
 	S.stellar_class = "F"
-	if randf() < 0.05:
+	if randf() < 0.07:
 		S.stellar_class = "L"
-	print("Made a Giant")
 	return S
 
 func _make_mainsequence(pos):
 	var S = Star.new("Main Sequence",pos,round(rand_range(15,39)))
 	S.stellar_class = "K"
-	print("Made a Main Sequence")
 	return S
 
 func _make_dwarf(pos):
@@ -162,7 +107,6 @@ func _make_dwarf(pos):
 	S.stellar_class = "L"
 	if randf() < 0.05:
 		S.stellar_class = "F"
-	print("Made a Dwarf")
 	return S
 
 
