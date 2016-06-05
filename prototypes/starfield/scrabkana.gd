@@ -1,6 +1,11 @@
 
 extends Node
 
+
+# Letter choices & weights
+# Increase letter values to make
+# them more likely to be chosen
+# (based on Scrabble scores)
 var vowels = {
 		'a':	10,
 		'e':	10,
@@ -39,7 +44,7 @@ var consonants = {
 		'pf':	1,
 		'xh':	1}
 
-func randomChoiceIndex(chances):
+func _random_choice_Index(chances):
 	var sum = 0
 	for i in chances:
 		sum += i
@@ -52,45 +57,40 @@ func randomChoiceIndex(chances):
 			return choice
 		choice += 1
 
-func randomChoice(chances_dict):
+func _random_choice(chances_dict):
 	var strings = chances_dict.keys()
 	var chances = []
 	for key in chances_dict:
 		chances.append(chances_dict[key])
-	return strings[randomChoiceIndex(chances)]
+	return strings[_random_choice_Index(chances)]
 
-func makeSyllable(style):
-	#print('making syllable..')
+func _make_syllable(style):
 	var syllable = ""
 	if style <= 6:
-		syllable += randomChoice(consonants)
-		syllable += randomChoice(vowels)
+		syllable += _random_choice(consonants)
+		syllable += _random_choice(vowels)
 	elif style <= 8:
-		syllable += randomChoice(vowels)
-		syllable += randomChoice(consonants)
+		syllable += _random_choice(vowels)
+		syllable += _random_choice(consonants)
 	else:
-		syllable += randomChoice(vowels)
+		syllable += _random_choice(vowels)
 	return syllable
 		
-func makeWord(length):
-	#prints('making word..',length)
+func _make_word(length):
 	var word = ""
 	for i in range(length):
-		word += makeSyllable(int(rand_range(0,11)))
+		word += _make_syllable(int(rand_range(0,11)))
 	return word.capitalize()
 
+
+# CALL THIS function to generate a name of length words,
+# minSyl minimum syllables, maxSyl maximum syllables
 func makeName(length=1, minSyl=1, maxSyl=4):
-	#prints("making name..",length)
 	var name = ""
 	if length < 2:
 		minSyl = max(int(rand_range(3,5)),minSyl) #don't make one-word names too short
 		
 	for i in range(length):
-		name += makeWord(int(rand_range(minSyl,maxSyl))) + " "
+		name += _make_word(int(rand_range(minSyl,maxSyl))) + " "
 	return name
 
-#func _ready():
-#	for i in range(10):
-#		randomize()
-#		var nick = makeName(int(rand_range(1,4)))
-#		print(nick)
