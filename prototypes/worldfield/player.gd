@@ -1,7 +1,7 @@
 
 extends RigidBody2D
 
-var SPEED = 145
+var SPEED = 350
 
 func _integrate_forces(state):
 	var delta = state.get_step()

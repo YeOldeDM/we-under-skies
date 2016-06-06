@@ -1,0 +1,32 @@
+
+extends Node2D
+
+onready var map_layer = get_node('BG/MapLayer')
+onready var worldmap = map_layer.get_node('TileMap')
+onready var cloud_layer = get_node('BG/CloudLayer')
+onready var cloudparts = cloud_layer.get_node('Clouds')
+onready var orbit_layer = get_node('BG/OrbitLayer')
+
+var Size = 32
+var WaterCoverage = 0.5
+var Distance = 1
+
+func _ready():
+	worldmap.Size = Size
+	worldmap.water = WaterCoverage
+	worldmap.generate()
+	
+	var maplayer_size = Size*(32*Distance)
+	var cloudlayer_size = maplayer_size*2
+	
+	worldmap.set_scale(Vector2(Distance,Distance))
+	map_layer.set_mirroring(Vector2(maplayer_size,maplayer_size))
+	var sc = max(0.09, Distance*0.25)
+	map_layer.set_motion_scale(Vector2(sc,sc))
+	cloud_layer.set_motion_scale(Vector2(sc*2,sc*2))
+	cloud_layer.set_mirroring(Vector2(cloudlayer_size,cloudlayer_size))
+	cloudparts.set_emission_half_extents(Vector2(maplayer_size,maplayer_size))
+	cloudparts.set_amount(maplayer_size*4)
+	
+
+

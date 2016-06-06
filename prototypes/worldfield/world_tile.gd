@@ -5,13 +5,13 @@ var Size = 128
 var water = 0.5
 var map
 
-func _ready():
+func generate():
 	randomize()
 	map = MapGen.generate_map(Size,0,water)
-	draw_map()
+	_draw_map()
 
 
-func draw_map():
+func _draw_map():
 	for x in range(Size):
 		for y in range(Size):
 			if map[x][y] == 0:
@@ -24,4 +24,4 @@ func draw_map():
 
 func _on_IterateMap_pressed():
 	MapGen._iterate(map,Size)
-	draw_map()
+	_draw_map()
