@@ -7,9 +7,9 @@ onready var cloud_layer = get_node('BG/CloudLayer')
 onready var cloudparts = cloud_layer.get_node('Clouds')
 onready var orbit_layer = get_node('BG/OrbitLayer')
 
-var Size = 32
+var Size = 128
 var WaterCoverage = 0.5
-var Distance = 1
+var Distance = .5
 
 func _ready():
 	worldmap.Size = Size
