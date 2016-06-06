@@ -71,7 +71,7 @@ func _make_stars( made_stars, count, star_factory ):
 		while tries > 0:
 			var pos = _rpos()
 			var new_star = call(star_factory,pos)
-			new_star.name = skana.makeName(int(rand_range(1,3)),2,4)
+			new_star.name = NameGen.MakeName()
 			var made = true
 			for star in made_stars:
 				var D = star.get_distance_to(pos)

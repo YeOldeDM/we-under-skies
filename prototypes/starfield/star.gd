@@ -8,7 +8,7 @@ func _ready():
 
 func _on_Area2D_mouse_enter():
 	get_parent().set_star_label_text(data.name, get_modulate())
-	get_parent().set_star_label_pos(self.get_pos())
+	get_parent().set_star_label_pos(self)
 
 
 func _on_Area2D_mouse_exit():

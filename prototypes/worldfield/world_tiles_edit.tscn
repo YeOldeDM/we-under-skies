@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://tiles.png" type="Texture" id=1]
+
+[node name="Node" type="Node"]
+
+[node name="Water" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 32, 32, 32 )
+
+[node name="Grass" type="Sprite" parent="."]
+
+transform/pos = Vector2( 34, 0 )
+z/z = -1
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="No" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 34 )
+z/z = -1
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 32, 32, 32 )
+
+[node name="Trees" type="Sprite" parent="."]
+
+transform/pos = Vector2( 35, 34 )
+z/z = -1
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 32, 32, 32 )
+
+
