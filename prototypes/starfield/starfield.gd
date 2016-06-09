@@ -34,12 +34,12 @@ func _ready():
 		add_child(S)
 		S.data = star
 		S.set_pos(S.data.pos)
-		var sc = S.data.lum*0.02
-		S.set_scale(Vector2(sc,sc)*2)
+		var sc = S.data.get_lum_scale()
+		S.set_scale(Vector2(sc,sc)*1.5)
 		var color = StarGen.StellarColors[S.data.stellar_class]
 		S.set_modulate(color)
-		S.get_node('Haze').set_modulate(color)
-		S.get_node('Haze').set_self_opacity((S.data.lum*0.01)/4)
+		S.get_node('Twinkle/Haze').set_modulate(color)
+		S.get_node('Twinkle/Haze').set_self_opacity((S.data.lum*0.01)*0.3)
 		starList.append(S)
 	#bring the seed out of the RNG
 	randomize()	
@@ -50,9 +50,9 @@ func _ready():
 		if target.data.get_distance_to(other_star.data.pos) <= 200.0:
 			target_targets.append(other_star)
 	get_node('Camera').set_pos(target.get_pos())
-	update()
+	#update()
 
-func set_star_label_text( text, color=Color("black") ):
+func set_star_label_text( text, color=Color(0,0,0) ):
 	starlabel.set_text(text)
 	color = color.linear_interpolate(Color('black'),0.4)
 	starlabel.set('custom_colors/font_color_shadow',color)
@@ -76,7 +76,7 @@ func show_world_info( star ):
 	worldinfo.raise()
 
 
-func _draw():
-	if target:
-		for t in target_targets:
-			draw_line(target.get_global_pos(),t.get_global_pos(),Color(0.5,0.5,1,0.4))
+#func _draw():
+#	if target:
+#		for t in target_targets:
+#			draw_line(target.get_global_pos(),t.get_global_pos(),Color(0.5,0.5,1,0.4))

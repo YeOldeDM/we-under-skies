@@ -3,7 +3,37 @@ extends RigidBody2D
 
 var SPEED = 264
 
+onready var cam = get_node('eyes')
 
+func _ready():
+	set_process_input(true)
+
+func _input(event):
+	if event.type == InputEvent.KEY:
+		var z = null
+		var i = event.scancode
+		if i == KEY_1:
+			z = 0.5
+		if i == KEY_2:
+			z = 1.0
+		if i == KEY_3:
+			z = 2.0
+		if i == KEY_4:
+			z = 2.5
+		if i == KEY_5:
+			z = 3.0
+		if i == KEY_6:
+			z = 3.5
+		if i == KEY_7:
+			z = 4.0
+		if i == KEY_8:
+			z = 6.0
+		if i == KEY_9:
+			z = 8.0
+		if i == KEY_0:
+			z = 10.0
+		if z and cam.get_zoom().x != z:
+			cam.set_zoom(Vector2(z,z))
 
 func _integrate_forces(state):
 	var delta = state.get_step()

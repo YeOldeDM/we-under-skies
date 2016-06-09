@@ -128,9 +128,9 @@ bounce = 0.0
 
 texture = ExtResource( 5 )
 
-[node name="CanvasModulate" type="CanvasModulate" parent="BG"]
+[node name="AtmoColor" type="CanvasModulate" parent="BG"]
 
-color = Color( 0.949219, 0.894527, 0.730453, 1 )
+color = Color( 0.982941, 0.832031, 1, 1 )
 
 [node name="RigidBody2D" parent="." instance=ExtResource( 6 )]
 

@@ -9,7 +9,7 @@ var StellarColors = {
 	}
 
 var min_bounds = Vector2(32,32)
-var max_bounds = Vector2(1024-32,800-32)*4
+var max_bounds = Vector2(1024-32,800-32)*2
 
 class Star:
 	var name
@@ -29,11 +29,13 @@ class Star:
 	func get_distance_to(other_pos):
 		return int((self.pos - other_pos).length())
 
+	func get_lum_scale():
+		return self.lum*0.02
 
-var STAR_COUNT = 1200
+var STAR_COUNT = 2000
 
 var HYPERGIANTS = 0.005
-var GIANTS = 0.025
+var GIANTS = 0.011
 var MAIN_SEQUENCE = 0.28
 #var DWARVES = 0.61
 
@@ -75,7 +77,7 @@ func _make_stars( made_stars, count, star_factory ):
 			var made = true
 			for star in made_stars:
 				var D = star.get_distance_to(pos)
-				var L = (star.lum + new_star.lum)*1.8
+				var L = (star.lum + new_star.lum)*0.6
 				if D < L:
 					made = false
 			if made:

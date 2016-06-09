@@ -16,17 +16,17 @@ func _ready():
 	worldmap.water = WaterCoverage
 	worldmap.generate()
 	
+	#Calculate scales for parallax mirroring
 	var maplayer_size = Size*(32*Distance)
 	var cloudlayer_size = maplayer_size*2
 	
+	#Adjust parallax to fit the map
 	worldmap.set_scale(Vector2(Distance,Distance))
 	map_layer.set_mirroring(Vector2(maplayer_size,maplayer_size))
 	var sc = max(0.09, Distance*0.25)
 	map_layer.set_motion_scale(Vector2(sc,sc))
 	cloud_layer.set_motion_scale(Vector2(sc*2,sc*2))
 	cloud_layer.set_mirroring(Vector2(cloudlayer_size,cloudlayer_size))
-	cloudparts.set_emission_half_extents(Vector2(maplayer_size,maplayer_size))
-	cloudparts.set_amount(maplayer_size*4)
+	cloudparts.set_emission_half_extents(Vector2(cloudlayer_size*2,cloudlayer_size*2))
+	cloudparts.set_amount(min(maplayer_size/16,1024))
 	
-
-
