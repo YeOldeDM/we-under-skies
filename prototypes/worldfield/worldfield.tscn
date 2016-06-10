@@ -32,7 +32,7 @@ scroll/ignore_camera_zoom = false
 [node name="MapLayer" type="ParallaxLayer" parent="BG"]
 
 motion/scale = Vector2( 0.3, 0.3 )
-motion/mirroring = Vector2( 1024, 1024 )
+motion/mirroring = Vector2( 0, 0 )
 
 [node name="TileMap" type="TileMap" parent="BG/MapLayer"]
 
@@ -67,7 +67,7 @@ config/time_scale = 0.1
 config/preprocess = 1000.0
 config/half_extents = Vector2( 1024, 1024 )
 config/texture = ExtResource( 4 )
-params/direction = 5.0
+params/direction = 90.0
 params/spread = 180.0
 params/linear_velocity = 20.0
 params/spin_velocity = 0.1
@@ -83,7 +83,6 @@ params/final_size = 2.0
 params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
-randomness/direction = 1.0
 randomness/spread = 1.0
 randomness/linear_velocity = 1.0
 randomness/initial_angle = 1.0
@@ -96,6 +95,7 @@ color/color_ramp = SubResource( 1 )
 
 motion/scale = Vector2( 1, 1 )
 motion/mirroring = Vector2( 2048, 2048 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BG/OrbitLayer"]
 
@@ -130,7 +130,7 @@ texture = ExtResource( 5 )
 
 [node name="AtmoColor" type="CanvasModulate" parent="BG"]
 
-color = Color( 0.982941, 0.832031, 1, 1 )
+color = Color( 0.933594, 0.623811, 0.455856, 1 )
 
 [node name="RigidBody2D" parent="." instance=ExtResource( 6 )]
 
@@ -139,7 +139,7 @@ transform/pos = Vector2( 259.262, 212.535 )
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
 
 anchor_mode = 1
-rotating = false
+rotating = true
 current = true
 zoom = Vector2( 1, 1 )
 limit/left = -10000000
@@ -155,8 +155,51 @@ drag_margin/top = 0.05
 drag_margin/right = 0.05
 drag_margin/bottom = 0.05
 
+[node name="zoom1" type="Button" parent="RigidBody2D/Camera2D"]
+
+margin/left = -123.0
+margin/top = 207.0
+margin/right = -97.0
+margin/bottom = 226.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+text = "1x"
+flat = false
+
+[node name="zoom2" type="Button" parent="RigidBody2D/Camera2D"]
+
+margin/left = -83.0
+margin/top = 207.0
+margin/right = -57.0
+margin/bottom = 226.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+text = "1.5x"
+flat = false
+
+[node name="zoom3" type="Button" parent="RigidBody2D/Camera2D"]
+
+margin/left = -33.0
+margin/top = 207.0
+margin/right = 3.0
+margin/bottom = 226.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+text = "2x"
+flat = false
+
 [node name="IterateMap" type="Button" parent="RigidBody2D"]
 
+visibility/visible = false
 margin/left = -27.0
 margin/top = 24.0
 margin/right = 27.0
@@ -168,6 +211,12 @@ size_flags/vertical = 2
 toggle_mode = false
 text = "Iterate!"
 flat = false
+
+[connection signal="pressed" from="RigidBody2D/Camera2D/zoom1" to="." method="set_distance" binds= [ 1.0 ]]
+
+[connection signal="pressed" from="RigidBody2D/Camera2D/zoom2" to="." method="set_distance" binds= [ 0.5 ]]
+
+[connection signal="pressed" from="RigidBody2D/Camera2D/zoom3" to="." method="set_distance" binds= [ 0.25 ]]
 
 [connection signal="pressed" from="RigidBody2D/IterateMap" to="BG/MapLayer/TileMap" method="_on_IterateMap_pressed"]
 

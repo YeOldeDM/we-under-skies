@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://core/console/console.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/hack_italic.fnt" type="Font" id=2]
+[ext_resource path="res://assets/fonts/hack_bold.fnt" type="Font" id=3]
+[ext_resource path="res://assets/fonts/hack_regular.fnt" type="Font" id=4]
+[ext_resource path="res://core/console/consolebutton_up.png" type="Texture" id=5]
+[ext_resource path="res://core/console/consolebutton_down.png" type="Texture" id=6]
+
+[node name="Console" type="PanelContainer"]
+
+visibility/blend_mode = 2
+anchor/right = 1
+margin/top = -256.0
+margin/right = 324.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+script/script = ExtResource( 1 )
+
+[node name="box" type="VBoxContainer" parent="."]
+
+margin/left = 4.0
+margin/top = 8.0
+margin/right = 696.0
+margin/bottom = 252.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+alignment = 0
+
+[node name="out" type="RichTextLabel" parent="box"]
+
+margin/right = 692.0
+margin/bottom = 187.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/bold_font = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+
+[node name="in" type="LineEdit" parent="box"]
+
+margin/top = 191.0
+margin/right = 692.0
+margin/bottom = 215.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
+text = ""
+max_length = 0
+editable = true
+secret = false
+
+[node name="HSeparator" type="HSeparator" parent="box"]
+
+margin/top = 219.0
+margin/right = 692.0
+margin/bottom = 222.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="status" type="HBoxContainer" parent="box"]
+
+margin/top = 226.0
+margin/right = 692.0
+margin/bottom = 244.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+alignment = 0
+
+[node name="toggle" type="TextureButton" parent="box/status"]
+
+margin/right = 18.0
+margin/bottom = 18.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = true
+textures/normal = ExtResource( 5 )
+textures/pressed = ExtResource( 6 )
+
+[node name="clock" type="Label" parent="box/status"]
+
+margin/left = 22.0
+margin/top = 2.0
+margin/right = 355.0
+margin/bottom = 16.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "[ current date&time ]"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="version" type="Label" parent="box/status"]
+
+margin/left = 359.0
+margin/top = 2.0
+margin/right = 692.0
+margin/bottom = 16.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "[ name & version no ]"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tick" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+
