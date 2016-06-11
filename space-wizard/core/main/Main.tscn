@@ -5,8 +5,8 @@
 
 [node name="Main" type="Control"]
 
-anchor/right = 1
-anchor/bottom = 1
+margin/right = 1024.0
+margin/bottom = 600.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -26,10 +26,12 @@ tabs_visible = true
 
 [node name="Menu" type="Tabs" parent="Core"]
 
-visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
-margin/top = 23.0
+margin/left = 4.0
+margin/top = 31.0
+margin/right = 4.0
+margin/bottom = 4.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
@@ -56,8 +58,8 @@ margin/right = 1004.0
 margin/bottom = 554.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+size_flags/horizontal = 3
+size_flags/vertical = 3
 
 [node name="Viewport" type="Viewport" parent="Core/Galaxy/Starfield"]
 
@@ -82,7 +84,7 @@ visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
-margin/top = 23.0
+margin/top = 31.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -96,7 +98,7 @@ visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
-margin/top = 23.0
+margin/top = 31.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -134,6 +136,9 @@ physics/object_picking = false
 gui/disable_input = false
 
 [node name="Console" parent="." instance=ExtResource( 2 )]
+
+anchor/right = 0
+margin/right = 700.0
 
 [node name="QuitPopup" type="ConfirmationDialog" parent="."]
 

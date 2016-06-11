@@ -1,9 +1,11 @@
 
 extends RigidBody2D
 
+
+
 onready var sprite = get_node('Sprite')
 
-var SPEED = 350
+var SPEED = 650
 
 func _integrate_forces(state):
 	var delta = state.get_step()
@@ -44,6 +46,7 @@ func _integrate_forces(state):
 	
 	# Apply movement
 	set_linear_velocity(v)
-	get_node('prograde').set_pos(get_linear_velocity())
+	get_node('prograde').set_pos(Vector2(0,0).linear_interpolate(get_linear_velocity(),0.5))
+	
 
 

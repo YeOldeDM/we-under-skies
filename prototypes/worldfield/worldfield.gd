@@ -7,7 +7,9 @@ onready var cloud_layer = get_node('BG/CloudLayer')
 onready var cloudparts = cloud_layer.get_node('Clouds')
 onready var orbit_layer = get_node('BG/OrbitLayer')
 
-var Size = 128
+
+
+var Size = 64
 var WaterCoverage = 0.4		#should be between 0.4-0.6, or 0 or 1
 
 func _ready():
