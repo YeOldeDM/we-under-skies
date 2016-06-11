@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://starfield.gd" type="Script" id=1]
 [ext_resource path="res://camera_control.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://assets/music/brunken.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/gfx/vigg.png" type="Texture" id=4]
+[ext_resource path="res://assets/music/brunken.ogg" type="AudioStream" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -63,6 +64,14 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
+[node name="Sprite" type="Sprite" parent="HUD"]
+
+visibility/self_opacity = 0.27
+visibility/blend_mode = 2
+transform/scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+centered = false
+
 [node name="WorldInfo" type="RichTextLabel" parent="HUD"]
 
 margin/left = 17.0
@@ -94,7 +103,7 @@ max_lines_visible = -1
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 4 )
+stream/stream = ExtResource( 5 )
 stream/play = true
 stream/loop = true
 stream/volume_db = 0.0

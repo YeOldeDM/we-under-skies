@@ -39,7 +39,7 @@ func _ready():
 		var color = StarGen.StellarColors[S.data.stellar_class]
 		S.set_modulate(color)
 		S.get_node('Twinkle/Haze').set_modulate(color)
-		S.get_node('Twinkle/Haze').set_self_opacity((S.data.lum*0.01)*0.3)
+		S.get_node('Twinkle/Haze').set_self_opacity((S.data.lum*0.01)*0.35)
 		starList.append(S)
 	#bring the seed out of the RNG
 	randomize()	
@@ -49,7 +49,7 @@ func _ready():
 	for other_star in starList:
 		if target.data.get_distance_to(other_star.data.pos) <= 200.0:
 			target_targets.append(other_star)
-	get_node('Camera').set_pos(target.get_pos())
+	get_node('Camera').set_pos(Vector2(0,0))
 	#update()
 
 func set_star_label_text( text, color=Color(0,0,0) ):

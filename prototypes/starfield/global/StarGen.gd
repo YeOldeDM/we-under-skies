@@ -2,14 +2,16 @@
 extends Node
 
 var StellarColors = {
-	"O":	Color(0.2,0.2,0.8),
+	"O":	Color(0.3,0.6,0.9),
 	"F":	Color(0.8,0.8,1.0),
 	"K":	Color(0.8,0.5,0.0),
 	"L":	Color(1.0,0.2,0.2)
 	}
 
 var min_bounds = Vector2(32,32)
-var max_bounds = Vector2(1024-32,800-32)*2
+var max_bounds = Vector2(1024-32,800-32)*4
+
+var galaxy_radius = 2048
 
 class Star:
 	var name
@@ -32,12 +34,12 @@ class Star:
 	func get_lum_scale():
 		return self.lum*0.02
 
-var STAR_COUNT = 2000
+var STAR_COUNT = 1500
 
 var HYPERGIANTS = 0.005
-var GIANTS = 0.011
-var MAIN_SEQUENCE = 0.28
-#var DWARVES = 0.61
+var GIANTS = 0.01
+var MAIN_SEQUENCE = 0.18
+
 
 func make_galaxy():
 	
@@ -71,13 +73,15 @@ func _make_stars( made_stars, count, star_factory ):
 	while count > 0:
 		var tries = 5
 		while tries > 0:
-			var pos = _rpos()
+			var pos = false
+			while typeof(pos) == TYPE_BOOL:
+				pos = _random_in_radius()
 			var new_star = call(star_factory,pos)
 			new_star.name = NameGen.MakeName()
 			var made = true
 			for star in made_stars:
 				var D = star.get_distance_to(pos)
-				var L = (star.lum + new_star.lum)*0.6
+				var L = (star.lum + new_star.lum)
 				if D < L:
 					made = false
 			if made:
@@ -113,8 +117,15 @@ func _make_dwarf(pos):
 
 
 
+func _random_in_radius():
+	var x = round(rand_range(-galaxy_radius,galaxy_radius))
+	var y = round(rand_range(-galaxy_radius,galaxy_radius))
+	var V = Vector2(int(x),int(y))
+	if V.length() <= galaxy_radius:
+		return V
+	return false
 
-
+	
 func _rpos():
 	#return a random position within global bounds
 	var x = round(rand_range(min_bounds.x,max_bounds.x))

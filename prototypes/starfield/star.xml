@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="5" version="2.0" version_name="Godot Engine v2.0.stable.official">
+<resource_file type="PackedScene" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.stable.official">
 	<ext_resource path="res://star.gd" type="Script" index="1"></ext_resource>
 	<ext_resource path="res://star_halo.png" type="Texture" index="2"></ext_resource>
-	<ext_resource path="res://star.png" type="Texture" index="0"></ext_resource>
+	<ext_resource path="res://star.png" type="Texture" index="3"></ext_resource>
+	<ext_resource path="res://assets/gfx/star_small.png" type="Texture" index="0"></ext_resource>
 	<resource type="CircleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<real name="radius"> 19.752909 </real>
@@ -21,8 +22,8 @@
 			<string_array  len="50">
 				<string> "Star" </string>
 				<string> "transform/pos" </string>
-				<string> "transform/scale" </string>
 				<string> "texture" </string>
+				<string> "modulate" </string>
 				<string> "script/script" </string>
 				<string> "__meta__" </string>
 				<string> "Sprite" </string>
@@ -41,7 +42,7 @@
 				<string> "_update_shape_index" </string>
 				<string> "Twinkle" </string>
 				<string> "visibility/blend_mode" </string>
-				<string> "modulate" </string>
+				<string> "transform/scale" </string>
 				<string> "Haze" </string>
 				<string> "visibility/self_opacity" </string>
 				<string> "Selector" </string>
@@ -76,12 +77,12 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="121"> 				-1, -1, 6, 0, -1, 5, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 0, 0, 0, 7, 7, -1, 8, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 10, 14, 11, 15, 12, 0, 1, 0, 16, 16, -1, 3, 17, 6, 18, 8, 19, 13, 0, 0, 0, 6, 20, -1, 4, 21, 14, 2, 1, 3, 2, 22, 15, 0, 3, 0, 6, 23, -1, 4, 24, 16, 21, 14, 2, 17, 3, 18, 0, 0, 0, 36, 25, -1, 11, 24, 19, 26, 20, 27, 20, 28, 21, 29, 21, 30, 8, 31, 5, 32, 22, 33, 22, 34, 8, 35, 2, 0, 0, 0, 39, 37, -1, 1, 38, 23, 0 </int_array>
+			<int_array  len="121"> 				-1, -1, 6, 0, -1, 5, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 0, 0, 0, 7, 7, -1, 8, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 10, 14, 11, 15, 12, 0, 1, 0, 16, 16, -1, 3, 17, 6, 18, 8, 19, 13, 0, 0, 0, 6, 20, -1, 4, 21, 14, 22, 15, 2, 1, 3, 16, 0, 3, 0, 6, 23, -1, 4, 24, 17, 21, 14, 22, 18, 2, 19, 0, 0, 0, 36, 25, -1, 11, 24, 20, 26, 21, 27, 21, 28, 22, 29, 22, 30, 8, 31, 5, 32, 23, 33, 23, 34, 8, 35, 24, 0, 0, 0, 39, 37, -1, 1, 38, 25, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="24" shared="false">
+			<array  len="26" shared="false">
 				<vector2> 264, 264 </vector2>
-				<vector2> 0.5, 0.5 </vector2>
 				<resource  external="0">  </resource>
+				<color> 1, 0.962402, 0.890625, 1 </color>
 				<resource  external="1">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
@@ -97,14 +98,16 @@
 				<real> 1 </real>
 				<int> 0 </int>
 				<int> 1 </int>
-				<color> 0.663233, 0.773847, 1, 1 </color>
-				<real> 0.05 </real>
-				<vector2> 8, 8 </vector2>
+				<vector2> 0.5, 0.5 </vector2>
+				<color> 0.972656, 0.876186, 0.782684, 1 </color>
+				<real> 0.3 </real>
+				<vector2> 16, 16 </vector2>
 				<resource  external="2">  </resource>
 				<real> 0 </real>
 				<real> -12 </real>
 				<real> 12 </real>
 				<int> 2 </int>
+				<resource  external="3">  </resource>
 				<rect2> -128, -128, 256, 256 </rect2>
 			</array>
 			<string> "version" </string>

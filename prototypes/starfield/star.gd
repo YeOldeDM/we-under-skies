@@ -4,30 +4,37 @@ extends Sprite
 onready var twinkle = get_node('Twinkle')
 
 var data
-var twinkle_strength = 0.01
+
+var tw_time = (randi()%50)+1
 
 func _ready():
 	set_process(true)
+	set_rotd(rand_range(0,360))
+
+func _twinkle():
+	var s = twinkle.get_scale()
+	var tscale = 0.5
+	var vari = tscale * 0.3
+	var R = rand_range(-0.03,0.03)
+	
+	if s.x >= vari+R:
+		R = vari-R
+	elif s.x <= -vari-R:
+		R = -vari+R
+	else: var c = randi()%2
+		if c==0:	R = s.x+R
+		else:	R = s.x-R
+		
+	R = Vector2(R+0.5,R+0.5)
+	twinkle.set_scale(R)
 
 func _process(delta):
-	var T = twinkle_strength
-	var tscale = twinkle.get_scale()
-	var true_scale = get_scale()
-	var vari = true_scale * 1.1
-	var R = rand_range(-T,T)
-	R = Vector2(R,R)
-	if tscale > true_scale+vari:
-		tscale = (true_scale+vari)-R
-	elif tscale < Vector2(1.0-vari.x,1.0-vari.y):
-		tscale = (true_scale+vari)+R
-	else:
-		var c = randi()%5
-		if c == 0:
-			c = randi()%2
-			if c == 0:
-				tscale += R
-			else: tscale -= R
-	twinkle.set_scale(tscale)
+	if tw_time <= 0:
+		tw_time = (randi()%20)+1
+		_twinkle()
+		return
+	tw_time -= 1
+
 	
 
 func _on_Area2D_mouse_enter():

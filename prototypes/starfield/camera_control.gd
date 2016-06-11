@@ -13,7 +13,7 @@ func _input(event):
 		var z = null
 		var i = event.scancode
 		if i == KEY_1:
-			z = 0.5
+			z = 0.25
 		if i == KEY_2:
 			z = 1.0
 		if i == KEY_3:
@@ -32,6 +32,10 @@ func _input(event):
 			z = 8.0
 		if i == KEY_0:
 			z = 10.0
+		if i == KEY_BRACERIGHT:
+			z = cam.get_zoom().x * 1.02
+		if i == KEY_BRACELEFT:
+			z = cam.get_zoom().x * 0.98
 		if z and cam.get_zoom().x != z:
 			cam.set_zoom(Vector2(z,z))
 
