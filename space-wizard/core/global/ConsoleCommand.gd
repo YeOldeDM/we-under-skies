@@ -53,10 +53,8 @@ func process_command( data ):
 
 
 # QUIT - quits the game.
-# To-Do: Save game before quitting
 func quit():
-	Sys.save_config()
-	get_tree().quit()
+	get_node('/root/Main').Quit()
 
 
 

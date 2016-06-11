@@ -82,14 +82,15 @@ func _ready():
 	
 	# display game & build no.
 	var check = File.new()
-	if check.file_exists(Sys.PATH):
+	if check.file_exists(Sys.CONFIGPATH):
 		print("found config")
 		Sys.load_config()
 	else:
 		print("making new config")
-		Sys._init_config()
+		Sys.init_config()
 	check.close()
 	
+	# get build number from System
 	if Sys.IS_BUILDING:
 		Sys.BUILDS += 1
 		print("Adding Build")

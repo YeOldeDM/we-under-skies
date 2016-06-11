@@ -8,15 +8,15 @@ onready var cloudparts = cloud_layer.get_node('Clouds')
 onready var orbit_layer = get_node('BG/OrbitLayer')
 
 var Size = 128
-var WaterCoverage = 0.5
+var WaterCoverage = 0.4		#should be between 0.4-0.6, or 0 or 1
 
 func _ready():
 	worldmap.Size = Size
 	worldmap.water = WaterCoverage
 	worldmap.generate()
-	for i in range(10):
+	for i in range(1):
 		worldmap._on_IterateMap_pressed()
-	set_distance(0.25)
+	set_distance(0.5)
 
 func set_distance(Distance=1.0):
 	#Calculate scales for parallax mirroring
