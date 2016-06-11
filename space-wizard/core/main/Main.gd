@@ -10,14 +10,16 @@ extends Control
 # and management of sub-scenes.
 
 onready var console = get_node('Console')
+onready var quitpop = get_node('QuitPopup')
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 
 func _notification( id ):
 	if id == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		var pos = OS.get_window_position()
-		pos.x += rand_range(-50,50)
-		pos.y += rand_range(-50,50)
-		OS.set_window_position(pos)
+		quitpop.popup()
 
+
+func _on_QuitPopup_confirmed():
+	Sys.save_config()
+	get_tree().quit()

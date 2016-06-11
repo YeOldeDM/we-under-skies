@@ -1,5 +1,5 @@
 
-extends PanelContainer
+extends Patch9Frame
 
 onready var output = get_node('box/out')
 onready var input = get_node('box/in')
@@ -9,7 +9,7 @@ onready var toggle = get_node('box/status/toggle')
 
 
 var SlideSpeed = 3
-onready var height = -get_rect().size.height + 28
+onready var height = -get_rect().size.height + 30
 
 var active = false
 

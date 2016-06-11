@@ -1,30 +1,36 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://core/console/console.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/hack_italic.fnt" type="Font" id=2]
-[ext_resource path="res://assets/fonts/hack_bold.fnt" type="Font" id=3]
-[ext_resource path="res://assets/fonts/hack_regular.fnt" type="Font" id=4]
-[ext_resource path="res://core/console/consolebutton_up.png" type="Texture" id=5]
-[ext_resource path="res://core/console/consolebutton_down.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/patch9_fancy1.png" type="Texture" id=1]
+[ext_resource path="res://core/console/console.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/hack_italic.fnt" type="Font" id=3]
+[ext_resource path="res://assets/fonts/hack_bold.fnt" type="Font" id=4]
+[ext_resource path="res://assets/fonts/hack_regular.fnt" type="Font" id=5]
+[ext_resource path="res://core/console/consolebutton_up.png" type="Texture" id=6]
+[ext_resource path="res://core/console/consolebutton_down.png" type="Texture" id=7]
 
-[node name="Console" type="PanelContainer"]
+[node name="Console" type="Patch9Frame"]
 
-visibility/blend_mode = 2
 anchor/right = 1
-margin/top = -256.0
+margin/top = -227.0
 margin/right = 324.0
+margin/bottom = 29.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-script/script = ExtResource( 1 )
+texture = ExtResource( 1 )
+patch_margin/left = 16
+patch_margin/top = 32
+patch_margin/right = 16
+patch_margin/bottom = 16
+script/script = ExtResource( 2 )
 
 [node name="box" type="VBoxContainer" parent="."]
 
-margin/left = 4.0
-margin/top = 8.0
-margin/right = 696.0
-margin/bottom = 252.0
+margin/left = 8.0
+margin/top = 19.0
+margin/right = 691.0
+margin/bottom = 250.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
@@ -33,29 +39,29 @@ alignment = 0
 
 [node name="out" type="RichTextLabel" parent="box"]
 
-margin/right = 692.0
-margin/bottom = 187.0
+margin/right = 683.0
+margin/bottom = 174.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-custom_fonts/italics_font = ExtResource( 2 )
-custom_fonts/bold_font = ExtResource( 3 )
-custom_fonts/normal_font = ExtResource( 4 )
+custom_fonts/italics_font = ExtResource( 3 )
+custom_fonts/bold_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 5 )
 bbcode/enabled = false
 bbcode/bbcode = ""
 visible_characters = -1
 
 [node name="in" type="LineEdit" parent="box"]
 
-margin/top = 191.0
-margin/right = 692.0
-margin/bottom = 215.0
+margin/top = 178.0
+margin/right = 683.0
+margin/bottom = 202.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = ""
 max_length = 0
 editable = true
@@ -63,9 +69,9 @@ secret = false
 
 [node name="HSeparator" type="HSeparator" parent="box"]
 
-margin/top = 219.0
-margin/right = 692.0
-margin/bottom = 222.0
+margin/top = 206.0
+margin/right = 683.0
+margin/bottom = 209.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -73,9 +79,9 @@ size_flags/vertical = 2
 
 [node name="status" type="HBoxContainer" parent="box"]
 
-margin/top = 226.0
-margin/right = 692.0
-margin/bottom = 244.0
+margin/top = 213.0
+margin/right = 683.0
+margin/bottom = 231.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -91,19 +97,19 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 toggle_mode = true
-textures/normal = ExtResource( 5 )
-textures/pressed = ExtResource( 6 )
+textures/normal = ExtResource( 6 )
+textures/pressed = ExtResource( 7 )
 
 [node name="clock" type="Label" parent="box/status"]
 
 margin/left = 22.0
 margin/top = 2.0
-margin/right = 355.0
+margin/right = 350.0
 margin/bottom = 16.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "[ current date&time ]"
 percent_visible = 1.0
 lines_skipped = 0
@@ -111,14 +117,14 @@ max_lines_visible = -1
 
 [node name="version" type="Label" parent="box/status"]
 
-margin/left = 359.0
+margin/left = 354.0
 margin/top = 2.0
-margin/right = 692.0
+margin/right = 683.0
 margin/bottom = 16.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "[ name & version no ]"
 align = 2
 percent_visible = 1.0
@@ -130,6 +136,6 @@ max_lines_visible = -1
 process_mode = 1
 wait_time = 1.0
 one_shot = false
-autostart = true
+autostart = false
 
 
