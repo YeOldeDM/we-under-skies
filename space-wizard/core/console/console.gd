@@ -1,6 +1,14 @@
 
 extends Patch9Frame
 
+
+# Handles the console UI
+# Takes incoming commands,
+# stores and handles cmd history,
+# and writes output to the
+# console terminal.
+
+
 onready var output = get_node('box/out')
 onready var input = get_node('box/in')
 onready var clock = get_node('box/status/clock')

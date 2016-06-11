@@ -2,6 +2,12 @@
 extends Node
 
 
+# Interprets text commands
+# and defines command functions
+
+
+
+
 # Constants
 # Used for text styles for console output
 const CMD_NOTFOUND = 0
@@ -14,10 +20,6 @@ const CMD_ANNOUNCE = 5
 
 # Quacks. How more can a duck?
 var Quacks = 0
-
-
-
-
 
 
 
@@ -35,6 +37,11 @@ func process_command( data ):
 		else:
 			return ["No command found: "+data[0], CMD_NOTFOUND]
 	return null
+
+
+
+
+
 
 
 # CONSOLE COMMAND FUNCTIONS DEFINED BELOW!

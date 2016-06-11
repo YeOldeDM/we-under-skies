@@ -26,6 +26,7 @@ tabs_visible = true
 
 [node name="Menu" type="Tabs" parent="Core"]
 
+visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/top = 23.0
@@ -36,17 +37,44 @@ size_flags/vertical = 3
 
 [node name="Galaxy" type="Tabs" parent="Core"]
 
-visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
-margin/top = 23.0
+margin/top = 31.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+
+[node name="Starfield" type="Control" parent="Core/Galaxy"]
+
+margin/left = 4.0
+margin/top = 4.0
+margin/right = 1004.0
+margin/bottom = 554.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="Viewport" type="Viewport" parent="Core/Galaxy/Starfield"]
+
+rect = Rect2( 0, 0, 1000, 550 )
+own_world = false
+world = null
+transparent_bg = false
+render_target/enabled = false
+render_target/v_flip = false
+render_target/clear_on_new_frame = true
+render_target/filter = false
+render_target/gen_mipmaps = false
+render_target/update_mode = 2
+audio_listener/enable_2d = false
+audio_listener/enable_3d = false
+physics/object_picking = false
+gui/disable_input = false
 
 [node name="SolarSystem" type="Tabs" parent="Core"]
 
@@ -75,6 +103,35 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Worldfield" type="Control" parent="Core/World"]
+
+margin/left = 4.0
+margin/top = 12.0
+margin/right = 1004.0
+margin/bottom = 562.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="Viewport" type="Viewport" parent="Core/World/Worldfield"]
+
+rect = Rect2( 0, 0, 1000, 550 )
+own_world = false
+world = null
+transparent_bg = false
+render_target/enabled = false
+render_target/v_flip = false
+render_target/clear_on_new_frame = true
+render_target/filter = false
+render_target/gen_mipmaps = false
+render_target/update_mode = 2
+audio_listener/enable_2d = false
+audio_listener/enable_3d = false
+physics/object_picking = false
+gui/disable_input = false
 
 [node name="Console" parent="." instance=ExtResource( 2 )]
 
