@@ -5,7 +5,7 @@ onready var bar = get_node('HUD/bar')
 var thread = Thread.new()
 var star_dat = []
 
-var M = 50
+var M = 500
 var count = 0
 
 func _load_starfield( path ):

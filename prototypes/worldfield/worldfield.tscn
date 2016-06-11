@@ -136,67 +136,6 @@ color = Color( 0.933594, 0.623811, 0.455856, 1 )
 
 transform/pos = Vector2( 259.262, 212.535 )
 
-[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
-
-anchor_mode = 1
-rotating = true
-current = true
-zoom = Vector2( 1, 1 )
-limit/left = -10000000
-limit/top = -10000000
-limit/right = 10000000
-limit/bottom = 10000000
-drag_margin/h_enabled = true
-drag_margin/v_enabled = true
-smoothing/enable = true
-smoothing/speed = 5.0
-drag_margin/left = 0.05
-drag_margin/top = 0.05
-drag_margin/right = 0.05
-drag_margin/bottom = 0.05
-
-[node name="zoom1" type="Button" parent="RigidBody2D/Camera2D"]
-
-margin/left = -123.0
-margin/top = 207.0
-margin/right = -97.0
-margin/bottom = 226.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-toggle_mode = false
-text = "1x"
-flat = false
-
-[node name="zoom2" type="Button" parent="RigidBody2D/Camera2D"]
-
-margin/left = -83.0
-margin/top = 207.0
-margin/right = -57.0
-margin/bottom = 226.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-toggle_mode = false
-text = "1.5x"
-flat = false
-
-[node name="zoom3" type="Button" parent="RigidBody2D/Camera2D"]
-
-margin/left = -33.0
-margin/top = 207.0
-margin/right = 3.0
-margin/bottom = 226.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-toggle_mode = false
-text = "2x"
-flat = false
-
 [node name="IterateMap" type="Button" parent="RigidBody2D"]
 
 visibility/visible = false
@@ -212,12 +151,89 @@ toggle_mode = false
 text = "Iterate!"
 flat = false
 
-[connection signal="pressed" from="RigidBody2D/Camera2D/zoom1" to="." method="set_distance" binds= [ 1.0 ]]
+[node name="prograde" type="Position2D" parent="RigidBody2D"]
 
-[connection signal="pressed" from="RigidBody2D/Camera2D/zoom2" to="." method="set_distance" binds= [ 0.5 ]]
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D/prograde"]
 
-[connection signal="pressed" from="RigidBody2D/Camera2D/zoom3" to="." method="set_distance" binds= [ 0.25 ]]
+anchor_mode = 1
+rotating = true
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 2.0
+drag_margin/left = 0.05
+drag_margin/top = 0.05
+drag_margin/right = 0.05
+drag_margin/bottom = 0.05
+
+[node name="zoom1" type="Button" parent="RigidBody2D/prograde/Camera2D"]
+
+margin/left = -123.0
+margin/top = 207.0
+margin/right = -97.0
+margin/bottom = 226.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+text = "1x"
+flat = false
+
+[node name="zoom2" type="Button" parent="RigidBody2D/prograde/Camera2D"]
+
+margin/left = -83.0
+margin/top = 207.0
+margin/right = -57.0
+margin/bottom = 226.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+text = "1.5x"
+flat = false
+
+[node name="zoom3" type="Button" parent="RigidBody2D/prograde/Camera2D"]
+
+margin/left = -33.0
+margin/top = 207.0
+margin/right = 3.0
+margin/bottom = 226.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+text = "2x"
+flat = false
+
+[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D/prograde"]
+
+visibility/visible = false
+polygon = Vector2Array( -7.49294, -7.5424, 5.77548, -7.5424, 6.4389, 6.38943, -8.15636, 5.72601 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
 
 [connection signal="pressed" from="RigidBody2D/IterateMap" to="BG/MapLayer/TileMap" method="_on_IterateMap_pressed"]
+
+[connection signal="pressed" from="RigidBody2D/prograde/Camera2D/zoom1" to="." method="set_distance" binds= [ 1.0 ]]
+
+[connection signal="pressed" from="RigidBody2D/prograde/Camera2D/zoom2" to="." method="set_distance" binds= [ 0.5 ]]
+
+[connection signal="pressed" from="RigidBody2D/prograde/Camera2D/zoom3" to="." method="set_distance" binds= [ 0.25 ]]
 
 

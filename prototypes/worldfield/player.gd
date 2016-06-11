@@ -44,5 +44,6 @@ func _integrate_forces(state):
 	
 	# Apply movement
 	set_linear_velocity(v)
+	get_node('prograde').set_pos(get_linear_velocity())
 
 
