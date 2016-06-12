@@ -9,6 +9,11 @@ extends Control
 # Manages high-level system functions,
 # and management of sub-scenes.
 
+const TAB_MENU = 0
+const TAB_GALAXY = 1
+const TAB_SOLARSYSTEM = 2
+const TAB_WORLD = 3
+
 # children
 onready var core = get_node('Core')
 onready var console = get_node('Console')
@@ -18,6 +23,7 @@ onready var menu = core.get_node('Menu')
 onready var galaxy = core.get_node('Galaxy')
 onready var solarsys = core.get_node('SolarSystem')
 onready var world = core.get_node('World')
+onready var worldspace = world.get_node('Worldfield/Viewport')
 
 
 
@@ -27,6 +33,7 @@ func _ready():
 	# over-ride normal quit procedure
 	get_tree().set_auto_accept_quit(false)
 	quitpop.connect("confirmed",self,"Quit")
+	core.set_current_tab(TAB_WORLD)
 
 
 func _notification( id ):

@@ -134,8 +134,6 @@ color = Color( 0.933594, 0.623811, 0.455856, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 512, 300 )
-
 [node name="Particles2D" parent="Player"]
 
 visibility/self_opacity = 0.1

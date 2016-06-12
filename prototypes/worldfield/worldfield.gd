@@ -7,6 +7,7 @@ onready var cloud_layer = get_node('BG/CloudLayer')
 onready var cloudparts = cloud_layer.get_node('Clouds')
 onready var orbit_layer = get_node('BG/OrbitLayer')
 
+onready var player = get_node('Player')
 
 
 var Size = 64
@@ -18,7 +19,7 @@ func _ready():
 	worldmap.generate()
 	for i in range(1):
 		worldmap._on_IterateMap_pressed()
-	set_distance(0.5)
+	set_distance(1.0)
 
 func set_distance(Distance=1.0):
 	#Calculate scales for parallax mirroring

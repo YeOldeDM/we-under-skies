@@ -6,7 +6,7 @@ extends Node
 # and defines command functions
 
 
-
+onready var main = get_node('/root/Main')
 
 # Constants
 # Used for text styles for console output
@@ -150,3 +150,15 @@ func timescale( value=null ):
 func say( text=null ):
 	if text:
 		return [text, CMD_ANNOUNCE]
+
+func playerspeed( value=null ):
+	var player = main.worldspace.get_node('Player')
+	if !value:
+		var V = player.X_SPEED
+		return ["Player speed is "+str(V), CMD_GET]
+	else:
+		if value.is_valid_integer() or value.is_valid_float():
+			var V = clamp(int(value), 0, 900)
+			player.set('X_SPEED', V)
+			return ["Player speed set to "+str(V), CMD_SET]
+			
