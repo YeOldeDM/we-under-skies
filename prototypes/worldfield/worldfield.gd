@@ -17,8 +17,8 @@ func _ready():
 	worldmap.Size = Size
 	worldmap.water = WaterCoverage
 	worldmap.generate()
-	for i in range(1):
-		worldmap._on_IterateMap_pressed()
+#	for i in range(1):
+#		worldmap._on_IterateMap_pressed()
 	set_distance(1.0)
 
 func set_distance(Distance=1.0):

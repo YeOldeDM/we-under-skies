@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://resources/wizard_flyer.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/star_halo.png" type="Texture" id=2]
@@ -6,13 +6,14 @@
 [ext_resource path="res://assets/graphics/wiz_arms_sheet.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/wiz_head_sheet.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/star_small.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/elements.png" type="Texture" id=7]
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 15.5669
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 
 length = 0.7
 loop = false
@@ -22,7 +23,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1 ), "values":[ 0, 1, 2, 3, 5, 6, 7 ] }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 length = 0.4
 loop = true
@@ -32,7 +33,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0, 1, 2, 3 ] }
 
-[sub_resource type="ColorRamp" id=6]
+[sub_resource type="ColorRamp" id=4]
 
 offsets = FloatArray( 0, 0.284327, 0.531207, 1 )
 colors = ColorArray( 1, 0.117188, 0, 1, 1, 0.991394, 0.449219, 0.715673, 0.0549367, 1, 0.734201, 0.468793, 1, 0, 0.914063, 0 )
@@ -40,7 +41,7 @@ colors = ColorArray( 1, 0.117188, 0, 1, 1, 0.991394, 0.449219, 0.715673, 0.05493
 [node name="Player" type="RigidBody2D"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -65,13 +66,13 @@ script/script = ExtResource( 1 )
 [node name="shoot_timer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 0.2
+wait_time = 0.7
 one_shot = false
 autostart = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-shape = SubResource( 7 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
@@ -105,7 +106,7 @@ frame = 7
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/main = SubResource( 4 )
+anims/main = SubResource( 2 )
 playback/active = true
 playback/speed = 6.0
 blend_times = [  ]
@@ -122,7 +123,7 @@ vframes = 4
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/main = SubResource( 5 )
+anims/main = SubResource( 3 )
 playback/active = true
 playback/speed = 1.5
 blend_times = [  ]
@@ -179,11 +180,12 @@ randomness/spin_velocity = 1.0
 randomness/initial_angle = 1.0
 randomness/initial_size = 1.0
 randomness/hue_variation = 0.2
-color/color_ramp = SubResource( 6 )
+color/color_ramp = SubResource( 4 )
 
 [node name="shoot_point" type="Position2D" parent="."]
 
 transform/pos = Vector2( 110, 0 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="shoot_left" type="Position2D" parent="shoot_point"]
 
@@ -192,6 +194,12 @@ transform/pos = Vector2( 0, -26 )
 [node name="shoot_right" type="Position2D" parent="shoot_point"]
 
 transform/pos = Vector2( 0, 26 )
+
+[node name="current_element" type="Sprite" parent="."]
+
+transform/pos = Vector2( -7.92229, -52.8153 )
+texture = ExtResource( 7 )
+hframes = 5
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
 

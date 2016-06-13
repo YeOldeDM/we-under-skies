@@ -13,18 +13,23 @@ const TAB_MENU = 0
 const TAB_GALAXY = 1
 const TAB_SOLARSYSTEM = 2
 const TAB_WORLD = 3
+const TAB_LOG = 4
 
 # children
 onready var core = get_node('Core')
 onready var console = get_node('Console')
 onready var quitpop = get_node('QuitPopup')
 
+# game screen tabs
 onready var menu = core.get_node('Menu')
 onready var galaxy = core.get_node('Galaxy')
-onready var solarsys = core.get_node('SolarSystem')
+onready var solarsys = core.get_node('StarSys')
 onready var world = core.get_node('World')
-onready var worldspace = world.get_node('Worldfield/Viewport')
+onready var discoveries = core.get_node('Log')
 
+# common game elements
+onready var worldspace = world.get_node('Worldfield/Viewport')
+onready var player = worldspace.get_node('Player')
 
 
 # PRIVATE FUNCTIONS
@@ -45,6 +50,9 @@ func _notification( id ):
 
 
 # PUBLIC FUNCTIONS
+
+func is_console_active():
+	return console.active
 
 # Show core game screens
 func show_menu():

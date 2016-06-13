@@ -3,11 +3,25 @@ extends RigidBody2D
 
 var fire_bullet_obj = preload('res://resources/bullets/fire_bullet.tscn')
 
+var bullets = [
+	preload('res://resources/bullets/fire_bullet.tscn'),
+	preload('res://resources/bullets/water_bullet.tscn'),
+	preload('res://resources/bullets/earth_bullet.tscn'),
+	preload('res://resources/bullets/air_bullet.tscn'),
+	]
+
+var tex_pants = preload('res://assets/graphics/wiz_legs_sheet.png')
+var tex_nopants = preload('res://assets/graphics/wiz_shorts_sheet.png')
+
+onready var main = get_node('/root/Main')
+
 onready var prograde = get_node('prograde')
 onready var base = get_node('base')
 onready var pants = base.get_node('pants')
 onready var arms = base.get_node('arms')
 onready var head = base.get_node('head')
+
+onready var current_element = get_node('current_element')
 
 onready var shoot_point = get_node('shoot_point')
 onready var shoot_left = shoot_point.get_node('shoot_left')
@@ -28,11 +42,29 @@ var dir = 1
 var arm_state = 0
 
 var can_shoot = true
-var shoot_element = 0
+var shoot_element = 0 setget _set_element
+var shoot_rate = 6 setget _set_shoot_rate
+
+var has_pants = true setget _set_pants
 
 func _set_speed( value ):
 	X_SPEED = value
 	Y_SPEED = X_SPEED / 3
+
+func _set_shoot_rate( value ):
+	shoot_rate = value
+	arms.get_node('anim').set_speed(value)
+
+func _set_pants( value ):
+	has_pants = value
+	if value == false:
+		pants.set_texture(tex_nopants)
+	else:
+		pants.set_texture(tex_pants)
+
+func _set_element( value ):
+	shoot_element = value
+	current_element.set_frame(value)
 
 func _integrate_forces(state):
 	# get delta (if we need it)
@@ -45,6 +77,11 @@ func _integrate_forces(state):
 	
 	var SHOOT = Input.is_action_pressed("shoot")
 	
+	var ch_fire = Input.is_key_pressed(KEY_1)
+	var ch_water = Input.is_key_pressed(KEY_2)
+	var ch_earth = Input.is_key_pressed(KEY_3)
+	var ch_air = Input.is_key_pressed(KEY_4)
+	
 	#initial motion vector (or for no input)
 	var v = Vector2(X_SPEED,0)
 	
@@ -52,22 +89,53 @@ func _integrate_forces(state):
 	var pants_f = 1
 	var new_dir = dir
 	
-	# Set values based on input
-	if UP:	v.y = -Y_SPEED
-		pants_f = 2
-	if DOWN:	v.y = Y_SPEED
-		pants_f = 0
+
+	if !main.is_console_active():
+		# Set values based on input
+		if UP:	v.y = -Y_SPEED
+			pants_f = 2
+		if DOWN:	v.y = Y_SPEED
+			pants_f = 0
+		
+		if LEFT:	new_dir = -1
+		if RIGHT:	new_dir = 1
+		
+		# set new pants frame
+		if pants_f != pants.get_frame():
+			pants.set_frame(pants_f)
+		# set new facing
+		if new_dir != dir:	
+			dir = new_dir
+
+		if ch_fire:		set('shoot_element', 0)
+		if ch_water:	set('shoot_element', 1)
+		if ch_earth:	set('shoot_element', 2)
+		if ch_air:		set('shoot_element', 3)
+		
+		
+		# Shooting logic
+		#if can_shoot:
+		if SHOOT and !arms.get_node('anim').is_playing():
+			#can_shoot = false
+			#shoot_timer.start()
+			if arm_state == 0:
+				arms.get_node('anim').play('main')
+				arm_state = 1
+			else:
+				arms.get_node('anim').play_backwards('main')
+				arm_state = 0
+			
+			var B = bullets[shoot_element].instance()
+			get_parent().add_child(B)
+			var P = shoot_right
+			if arm_state == 1:
+				
+				P = shoot_left
+			
+			P = P.get_global_pos()
 	
-	if LEFT:	new_dir = -1
-	if RIGHT:	new_dir = 1
-	
-	# set new pants frame
-	if pants_f != pants.get_frame():
-		pants.set_frame(pants_f)
-	# set new facing
-	if new_dir != dir:	
-		dir = new_dir
-	
+			B.fire(P,dir)
+
 	# set new offset for shootpoint
 	var P = 90*dir
 	P = Vector2(P,0)
@@ -86,28 +154,7 @@ func _integrate_forces(state):
 	var pp = Vector2(v.x*0.8,0)
 	prograde.set_pos(pp)
 	
-	# Shooting logic
-	if can_shoot:
-		if SHOOT and !arms.get_node('anim').is_playing():
-			can_shoot = false
-			shoot_timer.start()
-			if arm_state == 0:
-				arms.get_node('anim').play('main')
-				arm_state = 1
-			else:
-				arms.get_node('anim').play_backwards('main')
-				arm_state = 0
-			
-			var B = fire_bullet_obj.instance()
-			get_parent().add_child(B)
-			var P = shoot_right
-			if arm_state == 1:
-				
-				P = shoot_left
-			
-			P = P.get_global_pos()
 
-			B.fire(P,dir)
 
 
 
