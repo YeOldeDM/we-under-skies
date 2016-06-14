@@ -1,26 +1,15 @@
 
 extends Node
 
-var choices = [
-	'alpha',
-	'beta',
-	'gamma',
-	'sigma',
-	'omega',
-	'orion',
-	'polaris',
-	'sol',
-	'centauri',
-	'gemini',
-	'atlas',
-	'cancer',
-	'betelgeuse',
-	'sagitauri',
-	'palieades',
-	'altair',
-	'kappa',
-	'bootes'
-	]
+var choices
+
+func _ready():
+	var cfg = ConfigFile.new()
+	# Star Names provided by:
+	# http://www.astro.wisc.edu/~dolan/constellations/starname_list.html
+	cfg.load('res://starnames.ini')
+	choices = cfg.get_value('STARS','names')
+
 
 func _rand(m=1,M=10):
 	return int(round(rand_range(m,M)))

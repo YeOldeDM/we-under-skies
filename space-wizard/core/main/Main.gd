@@ -44,8 +44,8 @@ func _ready():
 func _notification( id ):
 	# Raise a confirmation dialog on window close request
 	if id == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		quitpop.raise()
 		quitpop.popup()
+		quitpop.raise()
 
 
 

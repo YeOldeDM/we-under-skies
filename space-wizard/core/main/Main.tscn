@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://core/main/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/test/test_bg.png" type="Texture" id=2]
 [ext_resource path="res://resources/wizard/wizard_flyer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/rocky/Rocky.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/fonts/cookies_40.fnt" type="Font" id=5]
-[ext_resource path="res://core/console/Console.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/fonts/cookies_40.fnt" type="Font" id=4]
+[ext_resource path="res://core/console/Console.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Control"]
 
@@ -111,6 +110,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+__meta__ = { "_editor_collapsed":true }
 
 [node name="Worldfield" type="Control" parent="Core/World"]
 
@@ -164,16 +164,6 @@ centered = false
 
 [node name="Player" parent="Core/World/Worldfield/Viewport" instance=ExtResource( 3 )]
 
-[node name="Rocky" parent="Core/World/Worldfield/Viewport" instance=ExtResource( 4 )]
-
-[node name="Rocky1" parent="Core/World/Worldfield/Viewport" instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 100, 100 )
-
-[node name="Rocky2" parent="Core/World/Worldfield/Viewport" instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 100, -100 )
-
 [node name="Log" type="Tabs" parent="Core"]
 
 visibility/visible = false
@@ -187,6 +177,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
 
 [node name="Tree" type="Tree" parent="Core/Log"]
 
@@ -208,7 +199,7 @@ margin/bottom = 65.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Discovery Log"
 align = 2
 valign = 1
@@ -216,7 +207,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Console" parent="." instance=ExtResource( 6 )]
+[node name="Console" parent="." instance=ExtResource( 5 )]
 
 anchor/right = 0
 margin/right = 700.0
