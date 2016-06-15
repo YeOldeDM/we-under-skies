@@ -10,8 +10,8 @@ var bullets = [
 	preload('res://resources/bullets/air_bullet.tscn'),
 	]
 
-var tex_pants = preload('res://assets/graphics/wiz_legs_sheet.png')
-var tex_nopants = preload('res://assets/graphics/wiz_shorts_sheet.png')
+var tex_pants = preload('res://assets/graphics/wizard/wiz_legs_sheet.png')
+var tex_nopants = preload('res://assets/graphics/wizard/wiz_shorts_sheet.png')
 
 onready var main = get_node('/root/Main')
 
@@ -144,7 +144,7 @@ func _integrate_forces(state):
 	
 	# set new sprite facing
 	if dir != base.get_scale().x:
-		base.set_scale(Vector2(dir*2,2))
+		base.set_scale(Vector2(dir,1))
 	
 	# set X velocity and apply linear velocity
 	v.x *= dir

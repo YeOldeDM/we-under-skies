@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://resources/rocky/Rocky.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/rocky.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/actors/rocky.png" type="Texture" id=2]
+
 
 [node name="Rocky" type="RigidBody2D"]
 

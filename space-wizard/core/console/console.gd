@@ -174,7 +174,7 @@ func _get_date_and_time():
 	var Y = date['year']
 	var M = date['month']
 	var D = date['day']
-	var txt = str(D)+"/"+str(M)+"/"+str(Y).right(2)
+	var txt = str(M)+"/"+str(D)+"/"+str(Y).right(2)
 	# Get time info
 	var time = OS.get_time()
 	var AMPM = "AM"

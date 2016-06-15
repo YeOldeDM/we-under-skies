@@ -60,9 +60,9 @@ func _get_name():
 	var name1 = choices[N1]
 	var name2 = choices[N2]
 	
-	name1 = _get_slice(_get_choice())
+	name1 = _get_slice(name1)
 	
-	name2 = _get_slice(_get_choice(),true)
+	name2 = _get_slice(name2,true)
 	
 
 	return (name1+name2).capitalize()

@@ -1,12 +1,18 @@
 [gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://resources/wizard_flyer.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/star_halo.png" type="Texture" id=2]
-[ext_resource path="res://assets/graphics/wiz_legs_sheet.png" type="Texture" id=3]
-[ext_resource path="res://assets/graphics/wiz_arms_sheet.png" type="Texture" id=4]
-[ext_resource path="res://assets/graphics/wiz_head_sheet.png" type="Texture" id=5]
-[ext_resource path="res://assets/graphics/star_small.png" type="Texture" id=6]
-[ext_resource path="res://assets/graphics/elements.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/stellar/star_halo.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/wizard/wiz_legs_sheet.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/wizard/wiz_arms_sheet.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/wizard/wiz_head_sheet.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/stellar/star_small.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/objects/elements.png" type="Texture" id=7]
+
+
+
+
+
+
 
 [sub_resource type="CircleShape2D" id=1]
 

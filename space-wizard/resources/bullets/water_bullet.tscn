@@ -1,8 +1,10 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://resources/bullets/water_bullet.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/element_bullets.png" type="Texture" id=2]
-[ext_resource path="res://assets/graphics/water_part.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/bullets/element_bullets.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/particles/water_part.png" type="Texture" id=3]
+
+
 
 [sub_resource type="ColorRamp" id=1]
 

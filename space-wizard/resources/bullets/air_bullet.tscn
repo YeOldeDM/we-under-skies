@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://resources/bullets/water_bullet.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/element_bullets.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/bullets/element_bullets.png" type="Texture" id=2]
+
 
 [sub_resource type="RectangleShape2D" id=2]
 

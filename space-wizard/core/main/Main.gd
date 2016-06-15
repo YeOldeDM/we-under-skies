@@ -28,9 +28,9 @@ onready var world = core.get_node('World')
 onready var discoveries = core.get_node('Log')
 
 # common game elements
-onready var worldspace = world.get_node('Worldfield/Viewport')
+onready var worldspace = world.get_node('Worldfield/Worldspace')
 onready var player = worldspace.get_node('Player')
-
+onready var vignette = get_node('Vignette')
 
 # PRIVATE FUNCTIONS
 
