@@ -1,18 +1,19 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://core/main/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/styles/darkblu.sbx" type="StyleBox" id=2]
-[ext_resource path="res://assets/graphics/test/test_bg.png" type="Texture" id=3]
-[ext_resource path="res://resources/wizard/wizard_flyer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://core/log/Log.gd" type="Script" id=5]
-[ext_resource path="res://assets/fonts/cookies_40.fnt" type="Font" id=6]
-[ext_resource path="res://assets/graphics/ui/vigg.png" type="Texture" id=7]
-[ext_resource path="res://core/console/Console.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/fonts/hatecomic.fnt" type="Font" id=9]
+[ext_resource path="res://core/starspace/Starspace.gd" type="Script" id=3]
+[ext_resource path="res://assets/graphics/test/test_bg.png" type="Texture" id=4]
+[ext_resource path="res://resources/wizard/wizard_flyer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://core/log/Log.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/cookies_40.fnt" type="Font" id=7]
+[ext_resource path="res://assets/graphics/ui/vigg.png" type="Texture" id=8]
+[ext_resource path="res://core/console/Console.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/fonts/hatecomic.fnt" type="Font" id=10]
 
 [sub_resource type="Theme" id=1]
 
-default_font = ExtResource( 9 )
+default_font = ExtResource( 10 )
 
 [node name="Main" type="Control"]
 
@@ -38,6 +39,7 @@ tabs_visible = true
 
 [node name="Menu" type="Tabs" parent="Core"]
 
+visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
@@ -51,13 +53,12 @@ size_flags/vertical = 3
 
 [node name="Galaxy" type="Tabs" parent="Core"]
 
-visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
-margin/left = 4.0
-margin/top = 31.0
-margin/right = 4.0
-margin/bottom = 4.0
+margin/left = 2.0
+margin/top = 25.0
+margin/right = 2.0
+margin/bottom = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
@@ -72,10 +73,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 
-[node name="Worldspace" type="Viewport" parent="Core/Galaxy/Starfield"]
+[node name="Starspace" type="Viewport" parent="Core/Galaxy/Starfield"]
 
 rect = Rect2( 0, 0, 1024, 600 )
-own_world = false
+own_world = true
 world = null
 transparent_bg = false
 render_target/enabled = false
@@ -88,8 +89,9 @@ audio_listener/enable_2d = false
 audio_listener/enable_3d = false
 physics/object_picking = false
 gui/disable_input = false
+script/script = ExtResource( 3 )
 
-[node name="Space" type="Control" parent="Core/Galaxy/Starfield/Worldspace"]
+[node name="Space" type="Control" parent="Core/Galaxy/Starfield/Starspace"]
 
 margin/right = 40.0
 margin/bottom = 40.0
@@ -98,16 +100,16 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 
-[node name="UI" type="CanvasLayer" parent="Core/Galaxy/Starfield/Worldspace"]
+[node name="UI" type="CanvasLayer" parent="Core/Galaxy/Starfield/Starspace"]
 
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
-[node name="Camera" type="Position2D" parent="Core/Galaxy/Starfield/Worldspace"]
+[node name="Camera" type="Position2D" parent="Core/Galaxy/Starfield/Starspace"]
 
-[node name="cam" type="Camera2D" parent="Core/Galaxy/Starfield/Worldspace/Camera"]
+[node name="cam" type="Camera2D" parent="Core/Galaxy/Starfield/Starspace/Camera"]
 
 anchor_mode = 1
 rotating = false
@@ -202,10 +204,10 @@ motion/mirroring = Vector2( 1024, 600 )
 
 [node name="Sprite" type="Sprite" parent="Core/World/Worldfield/Worldspace/ParallaxBackground/ParallaxLayer"]
 
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 centered = false
 
-[node name="Player" parent="Core/World/Worldfield/Worldspace" instance=ExtResource( 4 )]
+[node name="Player" parent="Core/World/Worldfield/Worldspace" instance=ExtResource( 5 )]
 
 [node name="Log" type="Tabs" parent="Core"]
 
@@ -220,7 +222,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-script/script = ExtResource( 5 )
+script/script = ExtResource( 6 )
 __meta__ = { "_editor_collapsed":true }
 
 [node name="Tree" type="Tree" parent="Core/Log"]
@@ -243,7 +245,7 @@ margin/bottom = 65.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "Discovery Log"
 align = 2
 valign = 1
@@ -256,16 +258,16 @@ max_lines_visible = -1
 visibility/self_opacity = 0.2
 visibility/blend_mode = 2
 transform/scale = Vector2( 4, 4 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 centered = false
 modulate = Color( 1, 0.49646, 0.414063, 0.660859 )
 
-[node name="Console" parent="." instance=ExtResource( 8 )]
+[node name="Console" parent="." instance=ExtResource( 9 )]
 
 anchor/right = 0
 margin/right = 700.0
 
-[node name="GeneratorPopup" type="PopupPanel" parent="."]
+[node name="UpdatePop" type="PopupPanel" parent="."]
 
 visibility/visible = false
 margin/left = 64.0
@@ -278,9 +280,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = SubResource( 1 )
 popup/exclusive = false
-__meta__ = { "_editor_collapsed":true }
 
-[node name="box" type="VBoxContainer" parent="GeneratorPopup"]
+[node name="box" type="VBoxContainer" parent="UpdatePop"]
 
 anchor/right = 1
 anchor/bottom = 1
@@ -295,14 +296,14 @@ size_flags/vertical = 3
 custom_constants/separation = 16
 alignment = 0
 
-[node name="Title" type="Label" parent="GeneratorPopup/box"]
+[node name="Title" type="Label" parent="UpdatePop/box"]
 
 margin/right = 864.0
 margin/bottom = 58.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
@@ -312,7 +313,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="ProgressBar" type="ProgressBar" parent="GeneratorPopup/box"]
+[node name="ProgressBar" type="ProgressBar" parent="UpdatePop/box"]
 
 margin/top = 74.0
 margin/right = 864.0
@@ -331,7 +332,7 @@ range/exp_edit = false
 range/rounded = true
 percent/visible = true
 
-[node name="Generate" type="Button" parent="GeneratorPopup/box"]
+[node name="Generate" type="Button" parent="UpdatePop/box"]
 
 margin/top = 122.0
 margin/right = 864.0
@@ -340,7 +341,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 toggle_mode = false
 text = "Go!"
 flat = false
@@ -349,9 +350,9 @@ flat = false
 
 visibility/visible = false
 margin/left = 402.0
-margin/top = 255.0
+margin/top = 207.0
 margin/right = 600.0
-margin/bottom = 327.0
+margin/bottom = 279.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -361,6 +362,6 @@ window/title = "Leaving already\?!"
 dialog/text = "Are you sure you want to quit\?"
 dialog/hide_on_ok = true
 
-[connection signal="pressed" from="GeneratorPopup/box/Generate" to="." method="_on_Generate_pressed"]
+[connection signal="pressed" from="UpdatePop/box/Generate" to="Core/Galaxy/Starfield/Starspace" method="_on_Generate_pressed"]
 
 

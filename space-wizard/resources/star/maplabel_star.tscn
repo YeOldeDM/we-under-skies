@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://assets/graphics/stellar/maplabel_frame.png" type="Texture" id=1]
+[ext_resource path="res://resources/star/maplabel_star.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/hack_regular_8.fnt" type="Font" id=3]
+
+[node name="MapLabel" type="Sprite"]
+
+transform/pos = Vector2( 208, 192 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -4 )
+modulate = Color( 1, 1, 1, 0.3763 )
+script/script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+
+margin/left = -128.0
+margin/top = -23.0
+margin/right = 128.0
+margin/bottom = -7.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.886719, 0.886719, 0.886719, 1 )
+custom_colors/font_color_shadow = Color( 0.226563, 0.125671, 0.125671, 1 )
+custom_constants/shadow_as_outline = 1
+text = "Selusa Secundus"
+align = 1
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

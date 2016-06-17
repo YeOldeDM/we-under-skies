@@ -97,11 +97,13 @@ func init_config():
 func save_config():
 	_build_config()
 	_config.save(CONFIGPATH)
+	print("Saved system settings to "+CONFIGPATH)
 
 # load from file and set my values
 func load_config():
 	var loaded = _config.load(CONFIGPATH)
 	if loaded == OK:
 		_set_from_config()
+		print("Loaded system settings from "+CONFIGPATH)
 	else:	OS.alert("no config file found!"+str(loaded))
 

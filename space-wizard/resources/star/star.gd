@@ -1,6 +1,8 @@
 
 extends Sprite
 
+onready var main = get_node('/root/Main')
+
 onready var twinkle = get_node('Twinkle')
 
 var data
@@ -45,7 +47,7 @@ func _on_Area2D_mouse_exit():
 
 
 func _on_Selector_pressed():
-	get_parent().show_world_info(self.data)
+	pass
 
 
 # Start twinkling when on-screen
