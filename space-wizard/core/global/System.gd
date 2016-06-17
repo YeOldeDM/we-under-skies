@@ -26,8 +26,9 @@ var IS_BUILDING = true
 var BUILDS = 0		
 
 # StarGen Parameters
-var STAR_SEED = PI*PI
-var STAR_COUNT = 2000
+var STAR_SEED = 0.0
+var STAR_DENSITY = 1.2
+var GALAXY_RADIUS = 512
 # % of each class of star to appear
 # (dwarves will make up the remainder)
 var GEN_HYPERGIANTS = 0.005
@@ -55,7 +56,8 @@ func _build_config():
 	c.set_value('DEV','BUILDS',BUILDS)
 	# set STARGEN settings
 	c.set_value('STARGEN','SEED', STAR_SEED)
-	c.set_value('STARGEN','COUNT', STAR_COUNT)
+	c.set_value('STARGEN','SIZE', GALAXY_RADIUS)
+	c.set_value('STARGEN','DENSITY', STAR_DENSITY)
 	c.set_value('STARGEN','HYPERGIANTS', GEN_HYPERGIANTS)
 	c.set_value('STARGEN','GIANTS', GEN_GIANTS)
 	c.set_value('STARGEN','MAINSEQUENCE', GEN_MAINSEQUENCE)
@@ -69,7 +71,9 @@ func _set_from_config():
 	BUILDS = c.get_value('DEV','BUILDS')
 	# set STARGEN settings
 	STAR_SEED = c.get_value('STARGEN','SEED')
-	STAR_COUNT = c.get_value('STARGEN','COUNT')
+	GALAXY_RADIUS = c.get_value('STARGEN','SIZE')
+	STAR_DENSITY = c.get_value('STARGEN','DENSITY')
+	
 	GEN_HYPERGIANTS = c.get_value('STARGEN','HYPERGIANTS')
 	GEN_GIANTS = c.get_value('STARGEN','GIANTS')
 	GEN_MAINSEQUENCE = c.get_value('STARGEN','MAINSEQUENCE')

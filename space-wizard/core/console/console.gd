@@ -186,6 +186,10 @@ func _get_date_and_time():
 		H = H-12
 	var M = time['minute']
 	var S = time['second']
+	if M < 10:
+		M = "0"+str(M)
+	if S < 10:
+		S = "0"+str(S)
 	# Concatenate
 	txt += " "+str(H)+":"+str(M)+":"+str(S)+" "+AMPM
 	# return string

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://core/main/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/test/test_bg.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://assets/fonts/cookies_40.fnt" type="Font" id=5]
 [ext_resource path="res://assets/graphics/ui/vigg.png" type="Texture" id=6]
 [ext_resource path="res://core/console/Console.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/fonts/hatecomic.fnt" type="Font" id=8]
+
+[sub_resource type="Theme" id=1]
+
+default_font = ExtResource( 8 )
 
 [node name="Main" type="Control"]
 
@@ -27,15 +32,13 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 tab_align = 2
-tabs_visible = true
-__meta__ = { "_editor_collapsed":true }
+tabs_visible = false
 
 [node name="Menu" type="Tabs" parent="Core"]
 
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
-margin/top = 23.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -49,7 +52,6 @@ visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
-margin/top = 23.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -65,7 +67,6 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-__meta__ = { "_editor_collapsed":true }
 
 [node name="Worldspace" type="Viewport" parent="Core/Galaxy/Starfield"]
 
@@ -100,13 +101,33 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
+[node name="Camera" type="Position2D" parent="Core/Galaxy/Starfield/Worldspace"]
+
+[node name="cam" type="Camera2D" parent="Core/Galaxy/Starfield/Worldspace/Camera"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 4, 4 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
 [node name="StarSys" type="Tabs" parent="Core"]
 
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
-margin/top = 23.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -120,13 +141,13 @@ visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
-margin/top = 23.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+__meta__ = { "_editor_collapsed":true }
 
 [node name="Worldfield" type="Control" parent="Core/World"]
 
@@ -186,7 +207,6 @@ visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
-margin/top = 23.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -237,6 +257,84 @@ modulate = Color( 1, 0.49646, 0.414063, 0.660859 )
 anchor/right = 0
 margin/right = 700.0
 
+[node name="GeneratorPopup" type="PopupPanel" parent="."]
+
+margin/left = 64.0
+margin/top = 304.0
+margin/right = 960.0
+margin/bottom = 528.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = SubResource( 1 )
+popup/exclusive = false
+
+[node name="box" type="VBoxContainer" parent="GeneratorPopup"]
+
+anchor/right = 1
+anchor/bottom = 1
+margin/left = 16.0
+margin/top = 16.0
+margin/right = 16.0
+margin/bottom = 16.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+custom_constants/separation = 16
+alignment = 0
+
+[node name="Title" type="Label" parent="GeneratorPopup/box"]
+
+margin/right = 864.0
+margin/bottom = 58.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "Generating Galaxy..."
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ProgressBar" type="ProgressBar" parent="GeneratorPopup/box"]
+
+margin/top = 74.0
+margin/right = 864.0
+margin/bottom = 106.0
+rect/min_size = Vector2( 0, 32 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+range/min = 0.0
+range/max = 2000.0
+range/step = 1.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = true
+percent/visible = true
+
+[node name="Generate" type="Button" parent="GeneratorPopup/box"]
+
+margin/top = 122.0
+margin/right = 864.0
+margin/bottom = 192.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+text = "Go!"
+flat = false
+
 [node name="QuitPopup" type="ConfirmationDialog" parent="."]
 
 visibility/visible = false
@@ -252,5 +350,7 @@ popup/exclusive = true
 window/title = "Leaving already\?!"
 dialog/text = "Are you sure you want to quit\?"
 dialog/hide_on_ok = true
+
+[connection signal="pressed" from="GeneratorPopup/box/Generate" to="." method="_on_Generate_pressed"]
 
 

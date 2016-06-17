@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://assets/graphics/ui/patch9_fancy1.png" type="Texture" id=1]
 [ext_resource path="res://core/console/console.gd" type="Script" id=2]
@@ -7,6 +7,20 @@
 [ext_resource path="res://assets/fonts/hack_regular.fnt" type="Font" id=5]
 [ext_resource path="res://core/console/consolebutton_up.png" type="Texture" id=6]
 [ext_resource path="res://core/console/consolebutton_down.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
 
 [node name="Console" type="Patch9Frame"]
 
@@ -19,6 +33,7 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 texture = ExtResource( 1 )
+modulate = Color( 0.0583191, 0.368665, 0.574219, 1 )
 patch_margin/left = 16
 patch_margin/top = 32
 patch_margin/right = 16
@@ -40,7 +55,7 @@ alignment = 0
 [node name="out" type="RichTextLabel" parent="box"]
 
 margin/right = 683.0
-margin/bottom = 174.0
+margin/bottom = 184.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
@@ -54,13 +69,15 @@ visible_characters = -1
 
 [node name="in" type="LineEdit" parent="box"]
 
-margin/top = 178.0
+margin/top = 188.0
 margin/right = 683.0
 margin/bottom = 202.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
 custom_fonts/font = ExtResource( 5 )
 text = ""
 max_length = 0
