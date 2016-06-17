@@ -1,26 +1,7 @@
 
 extends Node
 
-var choices = [
-	'alpha',
-	'beta',
-	'gamma',
-	'sigma',
-	'omega',
-	'orion',
-	'polaris',
-	'sol',
-	'centauri',
-	'gemini',
-	'atlas',
-	'cancer',
-	'betelgeuse',
-	'sagitauri',
-	'palieades',
-	'altair',
-	'kappa',
-	'bootes'
-	]
+var choices = []
 
 func _rand(m=1,M=10):
 	return int(round(rand_range(m,M)))
