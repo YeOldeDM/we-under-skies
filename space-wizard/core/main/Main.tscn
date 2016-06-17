@@ -1,17 +1,18 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://core/main/Main.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/test/test_bg.png" type="Texture" id=2]
-[ext_resource path="res://resources/wizard/wizard_flyer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://core/log/Log.gd" type="Script" id=4]
-[ext_resource path="res://assets/fonts/cookies_40.fnt" type="Font" id=5]
-[ext_resource path="res://assets/graphics/ui/vigg.png" type="Texture" id=6]
-[ext_resource path="res://core/console/Console.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/fonts/hatecomic.fnt" type="Font" id=8]
+[ext_resource path="res://assets/styles/darkblu.sbx" type="StyleBox" id=2]
+[ext_resource path="res://assets/graphics/test/test_bg.png" type="Texture" id=3]
+[ext_resource path="res://resources/wizard/wizard_flyer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://core/log/Log.gd" type="Script" id=5]
+[ext_resource path="res://assets/fonts/cookies_40.fnt" type="Font" id=6]
+[ext_resource path="res://assets/graphics/ui/vigg.png" type="Texture" id=7]
+[ext_resource path="res://core/console/Console.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/fonts/hatecomic.fnt" type="Font" id=9]
 
 [sub_resource type="Theme" id=1]
 
-default_font = ExtResource( 8 )
+default_font = ExtResource( 9 )
 
 [node name="Main" type="Control"]
 
@@ -31,14 +32,16 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_styles/panel = ExtResource( 2 )
 tab_align = 2
-tabs_visible = false
+tabs_visible = true
 
 [node name="Menu" type="Tabs" parent="Core"]
 
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
+margin/top = 31.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -52,6 +55,7 @@ visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
+margin/top = 31.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -128,6 +132,7 @@ visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
+margin/top = 31.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -141,6 +146,7 @@ visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
+margin/top = 23.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
@@ -196,10 +202,10 @@ motion/mirroring = Vector2( 1024, 600 )
 
 [node name="Sprite" type="Sprite" parent="Core/World/Worldfield/Worldspace/ParallaxBackground/ParallaxLayer"]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 centered = false
 
-[node name="Player" parent="Core/World/Worldfield/Worldspace" instance=ExtResource( 3 )]
+[node name="Player" parent="Core/World/Worldfield/Worldspace" instance=ExtResource( 4 )]
 
 [node name="Log" type="Tabs" parent="Core"]
 
@@ -207,13 +213,15 @@ visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 4.0
+margin/top = 23.0
 margin/right = 4.0
 margin/bottom = 4.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="Tree" type="Tree" parent="Core/Log"]
 
@@ -235,7 +243,7 @@ margin/bottom = 65.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 text = "Discovery Log"
 align = 2
 valign = 1
@@ -248,17 +256,18 @@ max_lines_visible = -1
 visibility/self_opacity = 0.2
 visibility/blend_mode = 2
 transform/scale = Vector2( 4, 4 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 centered = false
 modulate = Color( 1, 0.49646, 0.414063, 0.660859 )
 
-[node name="Console" parent="." instance=ExtResource( 7 )]
+[node name="Console" parent="." instance=ExtResource( 8 )]
 
 anchor/right = 0
 margin/right = 700.0
 
 [node name="GeneratorPopup" type="PopupPanel" parent="."]
 
+visibility/visible = false
 margin/left = 64.0
 margin/top = 304.0
 margin/right = 960.0
@@ -269,6 +278,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = SubResource( 1 )
 popup/exclusive = false
+__meta__ = { "_editor_collapsed":true }
 
 [node name="box" type="VBoxContainer" parent="GeneratorPopup"]
 
@@ -292,7 +302,7 @@ margin/bottom = 58.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
@@ -330,7 +340,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "Go!"
 flat = false
