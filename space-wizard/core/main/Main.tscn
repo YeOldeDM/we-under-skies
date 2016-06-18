@@ -39,13 +39,12 @@ tabs_visible = true
 
 [node name="Menu" type="Tabs" parent="Core"]
 
-visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
-margin/left = 4.0
-margin/top = 31.0
-margin/right = 4.0
-margin/bottom = 4.0
+margin/left = 2.0
+margin/top = 25.0
+margin/right = 2.0
+margin/bottom = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
@@ -53,6 +52,7 @@ size_flags/vertical = 3
 
 [node name="Galaxy" type="Tabs" parent="Core"]
 
+visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 margin/left = 2.0
@@ -76,7 +76,7 @@ size_flags/vertical = 3
 [node name="Starspace" type="Viewport" parent="Core/Galaxy/Starfield"]
 
 rect = Rect2( 0, 0, 1024, 600 )
-own_world = true
+own_world = false
 world = null
 transparent_bg = false
 render_target/enabled = false
@@ -87,7 +87,7 @@ render_target/gen_mipmaps = false
 render_target/update_mode = 2
 audio_listener/enable_2d = false
 audio_listener/enable_3d = false
-physics/object_picking = false
+physics/object_picking = true
 gui/disable_input = false
 script/script = ExtResource( 3 )
 
@@ -114,7 +114,7 @@ scale = Vector2( 1, 1 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 4, 4 )
+zoom = Vector2( 2, 2 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
@@ -133,10 +133,10 @@ drag_margin/bottom = 0.2
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
-margin/left = 4.0
-margin/top = 31.0
-margin/right = 4.0
-margin/bottom = 4.0
+margin/left = 2.0
+margin/top = 25.0
+margin/right = 2.0
+margin/bottom = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
@@ -147,10 +147,10 @@ size_flags/vertical = 3
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
-margin/left = 4.0
-margin/top = 23.0
-margin/right = 4.0
-margin/bottom = 4.0
+margin/left = 2.0
+margin/top = 25.0
+margin/right = 2.0
+margin/bottom = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
@@ -214,10 +214,10 @@ centered = false
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
-margin/left = 4.0
-margin/top = 23.0
-margin/right = 4.0
-margin/bottom = 4.0
+margin/left = 2.0
+margin/top = 25.0
+margin/right = 2.0
+margin/bottom = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -279,7 +279,7 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = SubResource( 1 )
-popup/exclusive = false
+popup/exclusive = true
 
 [node name="box" type="VBoxContainer" parent="UpdatePop"]
 

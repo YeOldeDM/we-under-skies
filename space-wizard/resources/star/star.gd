@@ -35,19 +35,25 @@ func _process(delta):
 		return
 	tw_time -= 1
 
-	
+func _input(event):
+	print("SEF")
+	if event.type == InputEvent.MOUSE_BUTTON:
+		if event.button_index == 1 and event.pressed:
+			print("Selecting ")
+		
 
 func _on_Area2D_mouse_enter():
-	get_parent().set_star_label_text(data.name, get_modulate())
-	get_parent().set_star_label_pos(self)
+	print("SADFA")
+	set_process_input(true)
 
 
 func _on_Area2D_mouse_exit():
-	get_parent().set_star_label_text("")
+	set_process_input(false)
 
 
 func _on_Selector_pressed():
-	pass
+	print('askdje')
+	main.starspace.select_star(self)
 
 
 # Start twinkling when on-screen
@@ -72,3 +78,7 @@ func Setup():
 	twinkle.set_opacity(data.get_lum_scale()*0.2)
 	set_process(true)
 	set_rotd(rand_range(0,360))
+	
+	get_node('Area2D').set_scale(Vector2(1,1))
+	
+

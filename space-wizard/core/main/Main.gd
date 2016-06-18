@@ -22,7 +22,6 @@ var star_scn = preload('res://resources/star/Star.tscn')
 # children
 onready var core = get_node('Core')
 onready var console = get_node('Console')
-onready var stargenpop = get_node('GeneratorPopup')
 onready var quitpop = get_node('QuitPopup')
 
 # game screen tabs

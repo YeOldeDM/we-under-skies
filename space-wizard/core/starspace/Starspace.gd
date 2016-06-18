@@ -101,6 +101,9 @@ func _place_star():
 		updater.hide()
 
 
+# Select a Star in the Galaxy
+func select_star(star):
+	print(star.data.name)
 
 
 # It Presses the Generate Button
